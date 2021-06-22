@@ -1,4 +1,4 @@
-package Assignment_5;
+package Assignment5;
 
 public class Singleton {
 
