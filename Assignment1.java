@@ -11,6 +11,9 @@ class FindFiles {
         I have implemented in 3 different ways.
     */
 
+    // Get the home directory location using System.getProperty
+    static String homeDirectory = System.getProperty("user.home");
+
     static void usingCommandLine(String regex) throws IOException
     /*
         WARNING - USES ONLY LINUX GLOB/REGEX INSTEAD OF JAVA REGEX
@@ -47,7 +50,7 @@ class FindFiles {
     */
     {
         
-        List<String> absolutePaths = Files.walk(Paths.get("/home/aarydb/"))         // Files.walk goes through each subdirectory from the given path
+        List<String> absolutePaths = Files.walk(Paths.get(homeDirectory))         // Files.walk goes through each subdirectory from the given path
                                         // Filtering out if the file is a file but not a directory
                                         .filter(Files::isRegularFile)
                                         // Filtering out the files which matches the regex expression
@@ -84,7 +87,7 @@ class FindFiles {
     {
         // Base code
 
-        String home = "/home/aarydb";
+        String home = homeDirectory;
         List<String> absolutePaths = new ArrayList<>();
 
         // Using the utility method for recursion
@@ -95,7 +98,7 @@ class FindFiles {
     }
 
     public static void main(String[] args) throws IOException {
-        
+
         Scanner s = new Scanner(System.in);
 
         while(true)
