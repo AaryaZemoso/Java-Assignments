@@ -24,8 +24,16 @@ public class Singleton {
         }
     */
     /*
-        We can solve this problem by making this method non-static or passing the object as a parameter.
-        These 2 ways are workarounds to make this method work.
+        We can solve this problem by creating the object inside the static method and returning it.
+
+        Modified Code:-
+
+        static Singleton init(String initString)
+        {
+            Singleton temp = new Singleton();
+            temp.randomString = initString;
+            return temp;
+        }
     */
 
     void print()

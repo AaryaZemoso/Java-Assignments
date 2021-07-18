@@ -55,7 +55,7 @@ class VampireNumbers
                 // If both the given arrays are same, then it is a vampire number.
                 if(Arrays.equals(prodArray, concatArray))
                 {
-//                    System.out.println(x + " x " + y + " = " + a);
+                    System.out.println(x + " x " + y + " = " + a);
                     return true;
                 }
 
@@ -106,7 +106,7 @@ class VampireNumbers
         {
             if(isVampire(i))
             {
-                System.out.println(i);
+//                System.out.println(i);
                 count++;
             }
 

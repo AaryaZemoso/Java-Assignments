@@ -24,8 +24,6 @@ class KYC
         if(currDate.isBefore(signupDate))
             return "No range";
 
-        // System.out.println(currDate);
-
         // Making two variables which are +-30 days from anniversary of signupdate
         LocalDate minSignupDate = LocalDate.of(currDate.getYear(), signupDate.getMonthValue(), signupDate.getDayOfMonth()).minusDays(30);
         LocalDate maxSignupDate = LocalDate.of(currDate.getYear(), signupDate.getMonthValue(), signupDate.getDayOfMonth()).plusDays(30);

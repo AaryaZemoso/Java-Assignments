@@ -6,7 +6,7 @@ public class SList<T>{
 
     static class SNode<T>{
         T data;
-        SNode next;
+        SNode<T> next;
         SNode(T data)
         {
             this.data = data;
@@ -21,15 +21,15 @@ public class SList<T>{
         }
     };
 
-    SNode head;
+    SNode<T> head;
 
-    public SListIterator iterator() {
+    public SListIterator<T> iterator() {
         return new SListIterator<T>(this);
     }
 
     public String toString()
     {
-        SListIterator itr = iterator();
+        SListIterator<T> itr = iterator();
         String makeString = "[ ";
         while(itr.hasNext())
             makeString += itr.next() + " , ";
@@ -40,7 +40,7 @@ public class SList<T>{
 
 class SListIterator<T>
 {
-    SList list;
+    SList<T> list;
     SList.SNode<T> curr;
 
     SListIterator(SList<T> list)
@@ -51,7 +51,7 @@ class SListIterator<T>
 
     public void add(T data)
     {
-        SList.SNode temp = new SList.SNode(data);
+        SList.SNode<T> temp = new SList.SNode<>(data);
 
         if(curr == null)
             this.list.head = this.curr = temp;
@@ -68,13 +68,30 @@ class SListIterator<T>
 
     public void remove()
     {
-        if(this.curr.next == null)
-            this.curr = this.list.head = null;
-
-        else
+        if(this.list.head == this.curr)
         {
-            this.curr.next = this.curr.next.next;
+            this.list.head = this.curr = this.list.head.next;
+            return;
         }
+
+        if(this.list.head.next == null)
+        {
+            this.list.head = this.curr = null;
+            return;
+        }
+
+        if(this.list.head == null)
+            return;
+
+        if(this.curr == null)
+            return;
+
+        SList.SNode<T> temp = this.list.head;
+        while(temp.next != this.curr)
+            temp = temp.next;
+
+        temp.next = this.curr.next;
+        this.curr = temp;
     }
 
     public void reset()
@@ -86,9 +103,9 @@ class SListIterator<T>
         return curr != null;
     }
 
-    public SList.SNode next() {
+    public SList.SNode<T> next() {
 
-        SList.SNode temp = this.curr;
+        SList.SNode<T> temp = this.curr;
         this.curr = this.curr.next;
         return temp;
     }

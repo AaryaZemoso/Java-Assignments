@@ -1,7 +1,7 @@
 package Assignment7;
 
 class A{
-    class B{
+    static class B{
         int x;
         B(int x)
         {

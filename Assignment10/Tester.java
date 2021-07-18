@@ -16,7 +16,7 @@ public class Tester {
 
         itr.reset();
 
-        itr.next();
+//        itr.next();
         itr.remove();
 
         System.out.println(list);
